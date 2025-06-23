@@ -1,0 +1,516 @@
+/* 2025 Modern White Minimalism Design System - Langflow Style Node */
+
+.langflow-node {
+  position: relative;
+  min-width: 300px;
+  max-width: 360px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.01);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+  font-feature-settings: 'kern', 'liga';
+  display: flex;
+  flex-direction: column;
+}
+
+.langflow-node:hover {
+  border-color: #e0e0e0;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px) scale(1.01);
+}
+
+.langflow-node.selected {
+  border-color: var(--template-color, #2563eb);
+  box-shadow: 
+    0 4px 25px rgba(37, 99, 235, 0.12),
+    0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Node Status States */
+.langflow-node.running {
+  border-color: #f59e0b;
+  animation: pulse-running 2.5s ease-in-out infinite;
+}
+
+.langflow-node.completed {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #fefefe 0%, #f0fdf4 100%);
+}
+
+.langflow-node.failed {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fefefe 0%, #fef2f2 100%);
+}
+
+.langflow-node.frozen {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #fefefe 0%, #f0f9ff 100%);
+  opacity: 0.9;
+}
+
+@keyframes pulse-running {
+  0%, 100% { 
+    box-shadow: 
+      0 4px 20px rgba(245, 158, 11, 0.15),
+      0 0 0 1px rgba(245, 158, 11, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 6px 30px rgba(245, 158, 11, 0.25),
+      0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+}
+
+/* Node Header - At the top */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--node-header-bg, #ffffff);
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  z-index: 1;
+}
+
+.node-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--template-color, #2563eb) 0%, transparent 100%);
+  opacity: 0.6;
+}
+
+.node-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.langflow-node:hover .node-icon {
+  background: var(--template-color, #2563eb);
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.node-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.3;
+  margin-bottom: 2px;
+  letter-spacing: -0.01em;
+}
+
+.node-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.node-category {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  letter-spacing: 0.01em;
+}
+
+.execution-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  font-variant-numeric: tabular-nums;
+}
+
+.node-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: status-glow 2s ease-in-out infinite;
+}
+
+@keyframes status-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Node Body - Configuration in the center */
+.node-body {
+  padding: 20px;
+  background: #ffffff;
+  flex: 1;
+  position: relative;
+}
+
+.node-description {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.node-handles-info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.node-handles-info .ant-badge {
+  font-size: 10px;
+}
+
+/* Input and Output Ports */
+.input-port, .output-port {
+  position: absolute !important;
+  pointer-events: all !important;
+  cursor: crosshair !important;
+  z-index: 9999 !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Make sure edges are above nodes but below controls */
+.react-flow__edge {
+  z-index: 1001 !important;
+}
+
+.react-flow__edge-path {
+  z-index: 1001 !important;
+  stroke-width: 3;
+  cursor: pointer;
+}
+
+.react-flow__edge.selected {
+  z-index: 1002 !important;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke-width: 4;
+}
+
+/* Nodes should be below edges */
+.react-flow__node {
+  z-index: 1000 !important;
+}
+
+.input-port:hover, .output-port:hover {
+  transform: translateY(-50%) scale(1.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Stable Node Layout */
+.langflow-node {
+  contain: layout style !important;
+}
+
+.node-header {
+  will-change: auto !important;
+}
+
+.node-body {
+  will-change: auto !important;
+}
+
+.langflow-handle:hover {
+  transform: scale(1.3);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 0 5px var(--template-color, #2563eb) !important;
+}
+
+.langflow-handle.react-flow__handle-connecting {
+  transform: scale(1.4);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 0 7px var(--template-color, #2563eb) !important;
+  animation: handle-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes handle-pulse {
+  0%, 100% { 
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.25),
+      0 0 0 4px rgba(255, 255, 255, 0.9),
+      0 0 0 7px var(--template-color, #2563eb);
+  }
+  50% { 
+    box-shadow: 
+      0 8px 30px rgba(0, 0, 0, 0.3),
+      0 0 0 4px rgba(255, 255, 255, 0.9),
+      0 0 0 10px var(--template-color, #2563eb);
+  }
+}
+
+/* Enhanced Handle Labels */
+.handle-label {
+  position: absolute !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 6px !important;
+  padding: 2px 6px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Node Footer - Stable with visibility toggle */
+.node-footer {
+  display: flex;
+  justify-content: center;
+  padding: 12px 20px 16px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  height: 48px;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.node-footer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.node-footer.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.node-action-btn {
+  border: 1px solid #f0f0f0 !important;
+  background: white !important;
+  color: #6b7280 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 500 !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+}
+
+.node-action-btn:hover {
+  color: var(--template-color, #2563eb) !important;
+  background: rgba(37, 99, 235, 0.05) !important;
+  border-color: rgba(37, 99, 235, 0.2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15) !important;
+}
+
+.node-action-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Frozen Overlay */
+.frozen-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+  animation: frozen-glow 3s ease-in-out infinite;
+}
+
+@keyframes frozen-glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Selection Indicator */
+.selection-indicator {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--template-color, #2563eb);
+  border-radius: 18px;
+  pointer-events: none;
+  animation: selection-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes selection-pulse {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+/* Micro-interactions */
+.langflow-node * {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography enhancements */
+.langflow-node {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .langflow-node {
+    min-width: 260px;
+    max-width: 280px;
+  }
+  
+  .node-header {
+    padding: 14px 16px 10px;
+    gap: 10px;
+  }
+  
+  .node-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .node-body {
+    padding: 14px 16px 16px;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .langflow-node {
+    background: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .node-header {
+    background: #1f2937;
+    border-bottom-color: #374151;
+  }
+  
+  .node-name {
+    color: #f9fafb;
+  }
+  
+  .node-description {
+    color: #9ca3af;
+  }
+  
+  .node-category {
+    background: #374151;
+    color: #d1d5db;
+    border-color: #4b5563;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .langflow-node {
+    border-width: 2px;
+    border-color: #000;
+  }
+  
+  .langflow-handle {
+    border-width: 4px !important;
+  }
+  
+  .handle-label {
+    background: #fff;
+    border: 2px solid #000;
+    color: #000;
+  }
+}
+
+/* Print styles */
+@media print {
+  .langflow-node {
+    box-shadow: none;
+    border: 2px solid #000;
+    background: white;
+  }
+  
+  .node-footer,
+  .langflow-handle,
+  .handle-label {
+    display: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.langflow-node:focus-within {
+  outline: 2px solid var(--template-color, #2563eb);
+  outline-offset: 4px;
+}

@@ -1,0 +1,263 @@
+/* Variable Aware TextArea Styles */
+.variable-aware-textarea {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.textarea-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.textarea-container {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Highlight overlay styles */
+.highlight-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5715;
+  padding: 4px 11px;
+  border: 1px solid transparent;
+  overflow: hidden;
+  color: transparent;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Variable highlighting */
+.highlight-overlay .variable-valid {
+  background-color: rgba(82, 196, 26, 0.2);
+  color: #52c41a;
+  border-radius: 3px;
+  padding: 1px 2px;
+  font-weight: 600;
+  border: 1px solid rgba(82, 196, 26, 0.4);
+}
+
+.highlight-overlay .variable-invalid {
+  background-color: rgba(255, 77, 79, 0.2);
+  color: #ff4d4f;
+  border-radius: 3px;
+  padding: 1px 2px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 77, 79, 0.4);
+  text-decoration: underline wavy #ff4d4f;
+}
+
+/* Textarea styling for transparency overlay */
+.variable-aware-textarea .ant-input {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  position: relative;
+  z-index: 2;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.variable-aware-textarea .ant-input:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+/* Variable suggestions dropdown */
+.variable-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+
+.suggestions-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f9ff;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.suggestion-code {
+  background-color: #f6f8fa;
+  color: #ff6b35;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e1e8ed;
+}
+
+.suggestion-type {
+  font-size: 11px;
+  color: #666;
+  background-color: #e6f7ff;
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid #91d5ff;
+}
+
+.suggestion-description {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.suggestion-source {
+  font-size: 10px;
+  color: #999;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Variable analysis section */
+.variable-analysis {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+}
+
+.used-variables {
+  margin-bottom: 8px;
+}
+
+.used-variables .ant-tag {
+  margin-bottom: 4px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.available-variables {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #f0f9ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+}
+
+.help-text {
+  padding: 6px 8px;
+  background-color: #fff7e6;
+  border: 1px solid #ffd591;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .variable-suggestions {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 16px;
+    max-height: 40vh;
+  }
+  
+  .suggestion-item {
+    padding: 12px;
+  }
+  
+  .variable-analysis {
+    padding: 8px;
+  }
+}
+
+/* Animation for suggestions */
+.variable-suggestions {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar for suggestions */
+.variable-suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.variable-suggestions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.variable-suggestions::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.variable-suggestions::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Variable tag states */
+.ant-tag.ant-tag-green {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+  color: #52c41a;
+}
+
+.ant-tag.ant-tag-red {
+  background-color: #fff2f1;
+  border-color: #ffccc7;
+  color: #ff4d4f;
+}
+
+/* Focus states */
+.variable-aware-textarea:focus-within .variable-analysis {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}

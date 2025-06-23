@@ -1,0 +1,413 @@
+/* Langflow Style Component Library CSS */
+
+.langflow-component-library {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  border-right: 1px solid #e8e8e8;
+}
+
+/* Search Bar */
+.library-search {
+  padding: 16px;
+  background: white;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.library-search .ant-input-affix-wrapper {
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+.library-search .ant-input-affix-wrapper:hover {
+  border-color: #40a9ff;
+  box-shadow: 0 0 8px rgba(24, 144, 255, 0.1);
+}
+
+.library-search .ant-input-affix-wrapper-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 12px rgba(24, 144, 255, 0.2);
+}
+
+/* Library Content */
+.library-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.library-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.library-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.library-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.library-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Categories */
+.categories-container {
+  padding: 0 12px;
+}
+
+.category-section {
+  margin-bottom: 24px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.category-icon {
+  font-size: 16px;
+}
+
+.category-title {
+  flex: 1;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.category-components {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Component Cards */
+.langflow-component-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  user-select: none;
+}
+
+.langflow-component-card:hover {
+  border-color: var(--component-color, #1890ff);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  background: var(--category-bg, #f6ffed);
+}
+
+.langflow-component-card:active {
+  cursor: grabbing;
+  transform: translateY(0) scale(0.98);
+}
+
+.langflow-component-card.dragging {
+  opacity: 0.5;
+  transform: rotate(3deg) scale(0.95);
+  z-index: 1000;
+}
+
+/* Component Icon */
+.component-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: var(--category-bg, #f6ffed);
+  border-radius: 8px;
+  border: 1px solid var(--component-color, #1890ff);
+  transition: all 0.3s ease;
+}
+
+.langflow-component-card:hover .component-icon {
+  background: var(--component-color, #1890ff);
+  color: white !important;
+  transform: scale(1.1);
+}
+
+/* Component Content */
+.component-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.component-name {
+  font-size: 14px;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+.component-description {
+  font-size: 12px;
+  color: #6c757d;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+/* Component Meta */
+.component-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.component-handles {
+  display: flex;
+  gap: 6px;
+}
+
+.handle-count {
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.handle-count.input {
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+.handle-count.output {
+  background: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.component-version {
+  color: #8c8c8c;
+  font-weight: 500;
+}
+
+/* Drag Indicator */
+.drag-indicator {
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.langflow-component-card:hover .drag-indicator {
+  opacity: 1;
+}
+
+.drag-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drag-dots div {
+  width: 4px;
+  height: 4px;
+  background: var(--component-color, #1890ff);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Hover Overlay */
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.langflow-component-card:hover .hover-overlay {
+  transform: translateX(100%);
+}
+
+/* Library Footer */
+.library-footer {
+  padding: 16px;
+  background: white;
+  border-top: 1px solid #e8e8e8;
+}
+
+.help-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px dashed #d9d9d9;
+}
+
+.drag-emoji {
+  font-size: 16px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Drag Preview */
+.drag-preview {
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.8;
+  transform: rotate(3deg);
+}
+
+/* Beta Badge Override */
+.langflow-component-card .ant-badge {
+  font-size: 10px;
+}
+
+.langflow-component-card .ant-badge-count {
+  height: 16px;
+  line-height: 14px;
+  min-width: 16px;
+  padding: 0 4px;
+  font-size: 9px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .langflow-component-card {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .component-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .component-name {
+    font-size: 13px;
+  }
+  
+  .component-description {
+    font-size: 11px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .langflow-component-library {
+    background: #141414;
+    border-right-color: #424242;
+  }
+  
+  .library-search,
+  .category-header,
+  .langflow-component-card,
+  .library-footer {
+    background: #1f1f1f;
+    border-color: #424242;
+  }
+  
+  .component-name {
+    color: #e6e6e6;
+  }
+  
+  .component-description {
+    color: #a6a6a6;
+  }
+  
+  .help-text {
+    background: #262626;
+    border-color: #424242;
+  }
+}
+
+/* Animation for new components */
+.langflow-component-card {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.langflow-component-card:focus {
+  outline: 2px solid var(--component-color, #1890ff);
+  outline-offset: 2px;
+}
+
+/* Loading skeleton */
+.component-skeleton {
+  height: 76px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

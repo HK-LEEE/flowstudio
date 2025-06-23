@@ -1,0 +1,291 @@
+/* Ollama Config Panel Styles */
+.ollama-config-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ollama-config-panel .ant-card {
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ollama-config-panel .ant-card-head {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border-radius: 8px 8px 0 0;
+}
+
+.ollama-config-panel .ant-card-head-title {
+  color: white;
+  font-weight: 600;
+}
+
+.ollama-config-panel .ant-card-extra .ant-btn {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ollama-config-panel .ant-card-extra .ant-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ollama-config-panel .ant-card-body {
+  padding: 16px;
+  height: calc(100% - 64px);
+  overflow-y: auto;
+}
+
+/* Connected Variables Card */
+.ollama-config-panel .ant-card.ant-card-small {
+  border: 1px solid #b7eb8f;
+  border-radius: 6px;
+}
+
+/* Collapse Panels */
+.ollama-config-panel .ant-collapse-ghost {
+  background: transparent;
+}
+
+.ollama-config-panel .ant-collapse-ghost > .ant-collapse-item {
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #fafafa;
+}
+
+.ollama-config-panel .ant-collapse-ghost > .ant-collapse-item:last-child {
+  border-bottom: none;
+}
+
+.ollama-config-panel .ant-collapse-header {
+  background: white;
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 600;
+}
+
+.ollama-config-panel .ant-collapse-content {
+  background: white;
+  border-radius: 0 0 6px 6px;
+}
+
+.ollama-config-panel .ant-collapse-content-box {
+  padding: 16px;
+}
+
+/* Variable Tags */
+.ollama-config-panel .ant-tag {
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.ollama-config-panel .ant-tag code {
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+/* Form Controls */
+.ollama-config-panel .ant-input-group-compact .ant-input:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.ollama-config-panel .ant-input-group-compact .ant-btn:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.ollama-config-panel .ant-input,
+.ollama-config-panel .ant-input-number,
+.ollama-config-panel .ant-select-selector {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.ollama-config-panel .ant-input:focus,
+.ollama-config-panel .ant-input-number:focus,
+.ollama-config-panel .ant-select-focused .ant-select-selector {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+/* Sliders */
+.ollama-config-panel .ant-slider {
+  margin: 12px 0;
+}
+
+.ollama-config-panel .ant-slider-track {
+  background: linear-gradient(to right, #ff6b35, #f7931e);
+}
+
+.ollama-config-panel .ant-slider-handle {
+  border-color: #ff6b35;
+  background: white;
+  box-shadow: 0 2px 6px rgba(255, 107, 53, 0.4);
+}
+
+.ollama-config-panel .ant-slider-handle:hover {
+  border-color: #e55a2b;
+}
+
+.ollama-config-panel .ant-slider-handle:focus {
+  border-color: #e55a2b;
+  box-shadow: 0 0 0 5px rgba(255, 107, 53, 0.12);
+}
+
+.ollama-config-panel .ant-slider-mark-text {
+  font-size: 11px;
+  color: #666;
+}
+
+/* Switches */
+.ollama-config-panel .ant-switch {
+  background-color: #f5f5f5;
+}
+
+.ollama-config-panel .ant-switch-checked {
+  background-color: #ff6b35;
+}
+
+/* Buttons */
+.ollama-config-panel .ant-btn {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.ollama-config-panel .ant-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ollama-config-panel .ant-btn-primary {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  border-color: #ff6b35;
+}
+
+.ollama-config-panel .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #e55a2b 0%, #e8830e 100%);
+  border-color: #e55a2b;
+}
+
+/* Alerts */
+.ollama-config-panel .ant-alert {
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.ollama-config-panel .ant-alert-success {
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+}
+
+.ollama-config-panel .ant-alert-error {
+  background-color: #fff2f1;
+  border: 1px solid #ffccc7;
+}
+
+/* Select Options */
+.ollama-config-panel .ant-select-item {
+  border-radius: 4px;
+  margin: 2px 4px;
+}
+
+.ollama-config-panel .ant-select-item-option-selected {
+  background-color: rgba(255, 107, 53, 0.1);
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+/* Loading States */
+.ollama-config-panel .ant-spin {
+  color: #ff6b35;
+}
+
+/* Example Templates Card */
+.ollama-config-panel .ant-card[style*="background-color: rgb(255, 247, 230)"] {
+  border: 1px solid #ffd591;
+  border-radius: 6px;
+}
+
+.ollama-config-panel .ant-typography code {
+  background-color: #f6f8fa;
+  color: #24292e;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+}
+
+/* Status Tags */
+.ollama-config-panel .ant-tag.ant-tag-green {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+  color: #52c41a;
+}
+
+.ollama-config-panel .ant-tag.ant-tag-red {
+  background-color: #fff2f1;
+  border-color: #ffccc7;
+  color: #ff4d4f;
+}
+
+.ollama-config-panel .ant-tag.ant-tag-blue {
+  background-color: #f0f9ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ollama-config-panel .ant-card-body {
+    padding: 12px;
+  }
+  
+  .ollama-config-panel .ant-collapse-content-box {
+    padding: 12px;
+  }
+  
+  .ollama-config-panel .ant-row .ant-col {
+    margin-bottom: 16px;
+  }
+}
+
+/* Custom Scrollbar */
+.ollama-config-panel .ant-card-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ollama-config-panel .ant-card-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.ollama-config-panel .ant-card-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.ollama-config-panel .ant-card-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation for panel opening */
+.ollama-config-panel .ant-collapse-content {
+  transition: all 0.3s ease;
+}
+
+/* Focus outline removal */
+.ollama-config-panel .ant-collapse-header:focus {
+  outline: none;
+}
+
+/* Improved spacing */
+.ollama-config-panel .ant-space-vertical {
+  width: 100%;
+}
+
+.ollama-config-panel .ant-space-vertical > .ant-space-item:last-child {
+  margin-bottom: 0;
+}

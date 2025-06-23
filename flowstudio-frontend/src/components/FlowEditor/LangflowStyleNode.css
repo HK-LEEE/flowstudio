@@ -1,0 +1,394 @@
+/* Langflow Style Node CSS */
+
+.langflow-node {
+  position: relative;
+  min-width: 240px;
+  max-width: 280px;
+  background: white;
+  border: 2px solid var(--node-border-color, #d9d9d9);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.langflow-node:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.langflow-node.selected {
+  border-color: var(--template-color, #1890ff);
+  box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.2);
+}
+
+/* Node Status States */
+.langflow-node.running {
+  animation: pulse 2s infinite;
+}
+
+.langflow-node.completed .node-header {
+  background: linear-gradient(45deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.langflow-node.failed .node-header {
+  background: linear-gradient(45deg, #fff2f1 0%, #ffccc7 100%);
+}
+
+.langflow-node.frozen {
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  50% { 
+    box-shadow: 0 4px 16px rgba(250, 173, 20, 0.3);
+  }
+}
+
+/* Node Header */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--node-header-bg, white);
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.node-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background: rgba(24, 144, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid var(--template-color, #1890ff);
+}
+
+.node-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-name {
+  font-size: 14px;
+  color: #2c3e50;
+  line-height: 1.2;
+  display: block;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.node-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.node-category {
+  font-size: 11px;
+  color: #8c8c8c;
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.execution-time {
+  font-size: 11px;
+  color: #52c41a;
+  font-weight: 500;
+}
+
+.node-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Node Body */
+.node-body {
+  padding: 12px 16px;
+  background: white;
+}
+
+.node-description {
+  font-size: 12px;
+  color: #6c757d;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  background: #fff2f1;
+  border: 1px solid #ffccc7;
+  border-radius: 4px;
+}
+
+.node-handles-info {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Node Footer */
+.node-footer {
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.node-action-btn {
+  border: none;
+  background: transparent;
+  color: #8c8c8c;
+  transition: all 0.2s ease;
+}
+
+.node-action-btn:hover {
+  color: var(--template-color, #1890ff);
+  background: rgba(24, 144, 255, 0.1);
+}
+
+/* Handles */
+.langflow-handle {
+  border: 2px solid white !important;
+  box-shadow: 0 0 0 1px #d9d9d9;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.langflow-handle:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 2px var(--template-color, #1890ff);
+}
+
+.langflow-handle.react-flow__handle-connecting {
+  box-shadow: 0 0 0 2px var(--template-color, #1890ff);
+  transform: scale(1.3);
+}
+
+/* Handle Labels */
+.handle-label {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  z-index: 20;
+  pointer-events: none;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.input-label {
+  left: 16px;
+}
+
+.output-label {
+  right: 16px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Frozen Overlay */
+.frozen-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(24, 144, 255, 0.1);
+  border: 1px solid #1890ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+/* Selection Indicator */
+.selection-indicator {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid var(--template-color, #1890ff);
+  border-radius: 12px;
+  pointer-events: none;
+  animation: selectionGlow 2s infinite;
+}
+
+@keyframes selectionGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Connection Compatibility */
+.langflow-node .react-flow__handle-top,
+.langflow-node .react-flow__handle-bottom {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .langflow-node {
+    min-width: 200px;
+    max-width: 240px;
+  }
+  
+  .node-header {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  
+  .node-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  
+  .node-name {
+    font-size: 13px;
+  }
+  
+  .node-body {
+    padding: 10px 12px;
+  }
+  
+  .node-description {
+    font-size: 11px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .langflow-node {
+    background: #1f1f1f;
+    border-color: #424242;
+  }
+  
+  .node-header {
+    background: #2a2a2a;
+    border-bottom-color: #424242;
+  }
+  
+  .node-body {
+    background: #1f1f1f;
+  }
+  
+  .node-name {
+    color: #e6e6e6;
+  }
+  
+  .node-description {
+    color: #a6a6a6;
+  }
+  
+  .node-category {
+    background: #424242;
+    color: #a6a6a6;
+  }
+  
+  .node-footer {
+    background: #2a2a2a;
+    border-top-color: #424242;
+  }
+  
+  .error-message {
+    background: #2a1f1f;
+    border-color: #5a3a3a;
+  }
+}
+
+/* Accessibility */
+.langflow-node:focus-within {
+  outline: 2px solid var(--template-color, #1890ff);
+  outline-offset: 2px;
+}
+
+.node-action-btn:focus {
+  outline: 1px solid var(--template-color, #1890ff);
+  outline-offset: 1px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .langflow-node {
+    border-width: 3px;
+  }
+  
+  .langflow-handle {
+    border-width: 3px !important;
+  }
+  
+  .handle-label {
+    background: black;
+    border: 1px solid white;
+  }
+}
+
+/* Print styles */
+@media print {
+  .langflow-node {
+    box-shadow: none;
+    border: 2px solid #000;
+  }
+  
+  .node-footer {
+    display: none;
+  }
+  
+  .langflow-handle {
+    display: none;
+  }
+}
